@@ -1,4 +1,5 @@
 import argparse
+import os
 import sys
 import typing
 
@@ -14,9 +15,18 @@ def commit_to_timesheet_entry(commit: Commit) -> str:
 
 def parse_args() -> typing.List:
     parser = argparse.ArgumentParser("")
-    parser.add_argument(
-        "timesheet_basedirectory", help="Directory where timesheet are store"
-    )
+    if "githook_timesheet_basedir" in os.environ:
+        parser.add_argument(
+            "timesheet_basedirectory",
+            default=os.environ["githook_timesheet_basedir"],
+            nargs="?",
+            help="Directory where timesheet are store",
+        )
+    else:
+        parser.add_argument(
+            "timesheet_basedirectory",
+            help="Directory where timesheet are store",
+        )
     return parser.parse_args()
 
 

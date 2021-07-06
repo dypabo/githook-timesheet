@@ -1,1 +1,1 @@
-python3 ./githook_timesheet/post_commit.py
+githook_timesheet
