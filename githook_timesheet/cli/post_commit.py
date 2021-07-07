@@ -1,10 +1,10 @@
-import argparse
 import sys
-import typing
 
 from githook_timesheet.commit import Commit
 from githook_timesheet.git import get_latest_commit
 from githook_timesheet.timesheet import add_to_timesheet
+
+from .common import default_args_parser
 
 
 def commit_to_timesheet_entry(commit: Commit) -> str:
@@ -12,16 +12,10 @@ def commit_to_timesheet_entry(commit: Commit) -> str:
     return str(commit)
 
 
-def parse_args() -> typing.List:
-    parser = argparse.ArgumentParser("")
-    parser.add_argument(
-        "timesheet_basedirectory", help="Directory where timesheet are store"
-    )
-    return parser.parse_args()
-
-
 def main() -> int:
-    args = parse_args()
+    """entry point for the post_commit script"""
+    parser = default_args_parser("Take last commit and add it to the timesheet")
+    args = parser.parse_args()
     commit = get_latest_commit()
     timesheet_entry = commit_to_timesheet_entry(commit)
     add_to_timesheet(args.timesheet_basedirectory, timesheet_entry)
