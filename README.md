@@ -35,5 +35,9 @@ you then have to do a commit to track your time.
 git commit --allow-empty -m "I am workig on this issue right now"
 ```
 
-## Future development
-- Extract a `smartd time sheet` for a given week based on logged informations
+## Weekly Report
+to get a report for all the work done in a week. run the following command.
+```
+githook_timesheet_weekly_report 2021-07-07
+```
+It will find all items in the week starting on the Monday of the supplied date.
