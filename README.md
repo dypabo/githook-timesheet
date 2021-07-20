@@ -34,11 +34,10 @@ export githook-timesheet-basedir=<path to where you want to save timesheet data>
 ```
 
 ## Non software timetracking
-for tracking time on non software project. You can create personnal repos and adding the `post-commit` file to the hooks directory.
+For tracking time manually without repository, you simply have to run the following command.
 
-you then have to do a commit to track your time.
 ```
-git commit --allow-empty -m "I am workig on this issue right now"
+githook_timesheet_task <title> <details>
 ```
 
 ## Weekly Report
