@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
     name="githook-timesheet",
-    version="1.1.2",
+    version="1.1.3",
     author="Jason Bouchard",
     author_email="jay@dypabo.com",
     description="",
