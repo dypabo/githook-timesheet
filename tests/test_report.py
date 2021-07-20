@@ -4,6 +4,8 @@ from pytest import fixture
 
 from githook_timesheet.report import get_days_in_week, build_report
 
+import githook_timesheet.report
+
 
 @fixture(name="timesheet_repo")
 def repo(tmp_path):
@@ -28,23 +30,14 @@ def repo(tmp_path):
 
 
 def test_build_report(timesheet_repo):
+    old_header = githook_timesheet.report.header
+    old_footer = githook_timesheet.report.footer
+    githook_timesheet.report.header = lambda *args: ""
+    githook_timesheet.report.footer = lambda *args: ""
     report = build_report(timesheet_repo, datetime(2021, 7, 7))
-    expected = (
-        "2021-07-05 - line1\n"
-        "2021-07-05 - line2\n"
-        "2021-07-06 - line1\n"
-        "2021-07-06 - line2\n"
-        "2021-07-07 - line1\n"
-        "2021-07-07 - line2\n"
-        "2021-07-08 - line1\n"
-        "2021-07-08 - line2\n"
-        "2021-07-09 - line1\n"
-        "2021-07-09 - line2\n"
-        "2021-07-10 - line1\n"
-        "2021-07-10 - line2\n"
-        "2021-07-11 - line1\n"
-        "2021-07-11 - line2\n"
-    )
+    githook_timesheet.report.header = old_header
+    githook_timesheet.report.footer = old_footer
+    expected = ( "line1\nline2\n")
     assert report == expected
 
 
