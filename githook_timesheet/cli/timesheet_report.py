@@ -1,6 +1,4 @@
-import sys
 from datetime import datetime
-
 
 from githook_timesheet.cli.common import default_args_parser
 from githook_timesheet.report import build_report
@@ -24,4 +22,4 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    raise SystemExit(main())
