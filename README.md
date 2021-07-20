@@ -11,6 +11,12 @@ There is one timesheet file per day.
 
 You can copy the file `post-commit` include in the repo and copy it in the directory `./git/hooks/` inside all repositories you are working on.
 
+You can also copy it in your `template` directory. That way, every time you `git clone` or `git init` a new repository. The `post-commit` hook will automatically be copy in the new repository.
+
+On Mac the directory is : `/usr/local/opt/git/share/git-core/templates/hooks/`
+On Linux (Ubuntu) the directory is : `/usr/share/git-core/templates/hooks/`
+
+
 ## Requirements
 - GIT
 - python3.9  (Should work with python3.6 and up)
@@ -24,7 +30,7 @@ python3 -m pip install .
 
 You must set the following environment variable in your `.bashrc` or `.zshrc`
 ```
-export githook-timesheet-basedir
+export githook-timesheet-basedir=<path to where you want to save timesheet data>
 ```
 
 ## Non software timetracking
