@@ -3,6 +3,7 @@ from os import environ
 from pathlib import Path
 from typing import Optional, Type
 
+from githook_timesheet.commit import Commit
 
 def add_optional_arg_if_env_var_exists(
     parser: ArgumentParser,
@@ -36,3 +37,10 @@ def default_args_parser(app_description: str) -> ArgumentParser:
         cast_type=Path,
     )
     return parser
+
+
+def commit_to_timesheet_entry(commit: Commit) -> str:
+    """stringify commit object for entry in timesheet"""
+    return str(commit)
+
+

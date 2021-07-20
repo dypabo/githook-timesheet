@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
     name="githook-timesheet",
-    version="1.0.0",
+    version="1.1.2",
     author="Jason Bouchard",
     author_email="jay@dypabo.com",
     description="",
@@ -14,6 +14,7 @@ setuptools.setup(
     ],
     entry_points={
         "console_scripts": [
+            "githook_timesheet_task = githook_timesheet.cli.task:main",
             "githook_timesheet_post_commit = githook_timesheet.cli.post_commit:main",
             "githook_timesheet_weekly_report = githook_timesheet.cli.timesheet_report:main",
         ]
